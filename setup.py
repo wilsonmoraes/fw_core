@@ -32,7 +32,7 @@ setuptools.setup(
     keywords='latex yaml',
 
     python_requires='>=3.7',
-    install_requires=['PyYAML', 'Flask==1.1.1', 'sqlalchemy==1.3.15'],
+    install_requires=['PyYAML', 'Flask==1.1.1', 'sqlalchemy==1.3.15', 'flask_sqlalchemy==2.4.0'],
 
     packages=setuptools.find_packages(),
     entry_points={
