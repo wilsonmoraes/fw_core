@@ -36,7 +36,7 @@ setuptools.setup(
 
     packages=setuptools.find_packages(),
     entry_points={
-        'console_scripts': ['fw_core=source.main:main'],
+        'console_scripts': ['fw_core=fw_core.main:main'],
     },
 
     project_urls={
