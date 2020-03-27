@@ -1,9 +1,7 @@
 import setuptools
-from os import path
 
-here = path.abspath(path.dirname(__file__))
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 github_url = 'https://github.com/wilsonmoraes/fw_core'
 
@@ -38,7 +36,7 @@ setuptools.setup(
 
     packages=setuptools.find_packages(),
     entry_points={
-        'console_scripts': ['fw_core=source.__main__:main'],
+        'console_scripts': ['fw_core=source.main:main'],
     },
 
     project_urls={
