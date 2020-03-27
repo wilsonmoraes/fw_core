@@ -14,8 +14,7 @@ class BaseModel:
     @classmethod
     def find_by_id(cls, id_param: int):
         """
-        Metodo que deve ser usado pra consultar um objeto no banco de dados passando o id, dado que a propriedade
-        'id' exista por padrão.
+        Method that should be used to query an object in the database by passing the id, since the 'id' property exists by default.
         EX.:
         MyClass.get_by(name = 'some name')
         :param id_param:
@@ -26,7 +25,7 @@ class BaseModel:
     @classmethod
     def refresh(cls, obj):
         """
-        Atualiza os atributos attributos do objeto passado por parametro.
+        Updates the attributes attributes of the object passed by parameter.
         :param obj:
         :return:
         """
@@ -35,7 +34,7 @@ class BaseModel:
     @classmethod
     def delete(cls, obj):
         """
-        Remove o objeto
+        removes the object
         :param obj: entidade
         """
         cls.alchemy_db().session.delete(obj)
@@ -43,7 +42,7 @@ class BaseModel:
     @classmethod
     def delete_by_id(cls, id_param):
         """
-        Remove o objeto
+        removes the object by id
         :param id_param: entidade
         """
         obj = cls.find_by_id(id_param=id_param)
@@ -52,7 +51,7 @@ class BaseModel:
     @classmethod
     def save(cls, model):
         """
-        insere ou atualiza objeto no banco
+        insert or update model into database
         :param model: entidade
         """
         if model.id:
