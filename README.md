@@ -23,4 +23,10 @@ twine upload dist/*
 You will be asked to provide your username and password. Provide the credentials you used to register to PyPi earlier.
 
 #### Congratulations, your package is now uploaded! 
-Visit https://pypi.org/project/fw_core/ to see your package online! 
+Visit https://pypi.org/project/fw_core/ to see your package online!
+
+
+## References
+- [Python Packaging](https://packaging.python.org/tutorials/packaging-projects/)
+- [Medium Tutorial](https://medium.com/@joel.barmettler/how-to-upload-your-python-package-to-pypi-65edc5fe9c56)
+ 
