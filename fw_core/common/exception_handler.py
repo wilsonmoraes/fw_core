@@ -1,6 +1,7 @@
 from http import HTTPStatus
 #
 from flask import jsonify, Blueprint
+from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import BadRequest
 
 exception_handler_bp = Blueprint('errors', __name__)
@@ -11,6 +12,18 @@ logger = logging.getLogger()
 
 @exception_handler_bp.app_errorhandler(Exception)
 def handle_invalid_usage(e):
+    logger.error(e, exc_info=True)
+    error_code = HTTPStatus.INTERNAL_SERVER_ERROR
+    error_description = "Internal server error"
+    if isinstance(e, JWTError):
+        error_description = e.error
+        error_code = e.status_code
+    # Se não colocar virgula - error, o exception volta no response.data e o correto é retornar response.error
+    return json_obj_error(error_code, error_description), error_code
+
+
+@exception_handler_bp.app_errorhandler(IntegrityError)
+def handle_integrity_usage(e):
     logger.error(e, exc_info=True)
     error_code = HTTPStatus.INTERNAL_SERVER_ERROR
     error_description = "Internal server error"

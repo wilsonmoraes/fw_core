@@ -35,12 +35,17 @@ class BusinessValidation:
         """
         err_msg: str = '\'{}\' cannot be null or null'
         for field in fields_requireds:
-            if field not in obj:
-                BusinessValidation.abort_422(err_msg.format(field))
-            elif isinstance(obj.get(field), str) and not obj.get(field):  # string vazia
-                BusinessValidation.abort_422(err_msg.format(field))
-            elif isinstance(obj.get(field), list) and len(obj.get(field)) == 0:  # lista vazia
-                BusinessValidation.abort_422(err_msg.format(field))
+            fild_splited: [str] = field.split('.')
+            first, rest = fild_splited[0], fild_splited[1:]
+            if rest:
+                BusinessValidation.required(obj[first], *rest)
+            else:
+                if field not in obj:
+                    BusinessValidation.abort_422(err_msg.format(field))
+                elif isinstance(obj.get(field), str) and not obj.get(field):  # string vazia
+                    BusinessValidation.abort_422(err_msg.format(field))
+                elif isinstance(obj.get(field), list) and len(obj.get(field)) == 0:  # lista vazia
+                    BusinessValidation.abort_422(err_msg.format(field))
 
     @staticmethod
     def abort_if(condition: bool, msg: str):
